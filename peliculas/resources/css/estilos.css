@@ -1,0 +1,50 @@
+|
+
+body {
+    background: linear-gradient(to right, rgba(22, 27, 34, 0.9), rgba(34, 45, 57, 0.9));
+    background-image: ('../images/peliculas.jpg');
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+    color: #221111;
+}
+
+.text-center {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.bg-white {
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(5px);    
+    color: #212529;
+}
+
+.btn-lg {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-lg:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.btn-outline-primary {
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.btn-outline-success {
+    border-color: #198754;
+    color: #198754;
+}
+
+.btn-outline-success:hover {
+    background-color: #198754;
+    color: #fff;
+}
