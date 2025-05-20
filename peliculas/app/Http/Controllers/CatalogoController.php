@@ -1,13 +1,15 @@
 <?php
-
+//este archivo se encarga de manejar toda la lógica relacionada con las películas en tu catálogo.
 namespace App\Http\Controllers;
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class CatalogoController extends Controller
 {
-    public function inicio() {
+    public function Inicio() {
         $consulta =new Catalogo(); 
         
         $peliculas = $consulta->all();
@@ -16,18 +18,40 @@ class CatalogoController extends Controller
     }
 
     public function listado() {
+        if(!Auth::user()){
+            return redirect()->route('login.formulario');
+        }
         $peliculas = Catalogo::all();
         return view('listado_peliculas', compact('peliculas'));
     }
+
+    
 
     public function agregar() {
         return view('agregar');
     }
 
-    public function guardar(Request $request) {
-        Catalogo::create($request->all());
-        return redirect()->route('listado');
-    }
+    
+public function guardar(Request $request)
+{
+    $request->validate([
+        'titulo' => 'required|string|max:255',
+        'descripcion' => 'required|string',
+        'genero' => 'required|string',
+        'director' => 'required|string',
+        'fecha_estreno' => 'required|date',
+    ], [
+        'titulo.required' => 'El título es obligatorio',
+        'descripcion.required' => 'La descripción es obligatoria',
+        'genero.required' => 'El género es obligatorio',
+        'director.required' => 'El director es obligatorio',
+        'fecha_estreno.required' => 'La fecha de estreno es obligatoria',
+    ]);
+
+    Catalogo::create($request->all());
+
+    return redirect()->route('listado')->with('mensaje', 'Película agregada correctamente');
+}
 
     public function editar($id) {
         //  $pelicula = Catalogo::where('id', $id)->first();
@@ -57,5 +81,6 @@ class CatalogoController extends Controller
     $pelicula->delete();
     return redirect()->route('listado')->with('mensaje', 'Película eliminada correctamente');
 }
+
 
 }

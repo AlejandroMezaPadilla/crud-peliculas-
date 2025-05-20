@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
         <div class="text-center p-5 rounded shadow-lg bg-white" style="max-width: 600px; width: 100%;">
             <h1 class="text-success fw-bold mb-4" style="font-size: 2.5rem;">
-                Bienvenido al catálogo de películas SexMex 🎬
+                Bienvenido al catálogo de películas  🎬
             </h1>
             <p class="text-muted mb-4">
                 Administra, consulta y edita tus películas favoritas de forma sencilla y rápida.
@@ -18,6 +18,8 @@
                 <a href="{{ route('agregar') }}" class="btn btn-outline-success btn-lg">
                     ➕ Agregar Nueva Película
                 </a>
+                </form>
+
             </div>
         </div>
     </div>

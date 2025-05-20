@@ -2,12 +2,21 @@
 
 @section('titulo', 'Editar Película')
 
+{{-- Mostrar errores de validación si existen --}}
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 @section('contenido')
     <h2>Editar Película</h2>
     <form action="{{ route('actualizar', $pelicula->id) }}" method="POST">
-        // Método PUT para actualizar
         @method('PUT')
-        // Token CSRF para seguridad 
         @csrf
         <div class="mb-3">
             <label>Título</label>
@@ -32,6 +41,5 @@
 
         <button type="submit" class="btn btn-primary">Actualizar</button>
         <a href="{{ route('listado') }}" class="btn btn-secondary">Cancelar</a>
-
     </form>
 @endsection
